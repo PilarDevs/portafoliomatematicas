@@ -264,14 +264,23 @@ class ReflexionesManager {
         const date = document.getElementById('new-date').value;
         const content = document.getElementById('new-content').value;
 
-        const newItem = {
-            id: Date.now(), // simple unique id
-            title,
-            content,
-            date
-        };
+        if (this.editingId) {
+            // Update existing
+            const index = this.data.findIndex(item => item.id === this.editingId);
+            if (index !== -1) {
+                this.data[index] = { ...this.data[index], title, date, content };
+            }
+        } else {
+            // Create New
+            const newItem = {
+                id: Date.now(), // simple unique id
+                title,
+                content,
+                date
+            };
+            this.data.unshift(newItem); // Add to beginning
+        }
 
-        this.data.unshift(newItem); // Add to beginning
         this.render();
         
         // Save Process
@@ -282,27 +291,61 @@ class ReflexionesManager {
 
         // Visual feedback & Toast
         const btn = this.form.querySelector('button[type="submit"]');
-        const originalText = btn.innerHTML;
+        const originalText = this.editingId ? '<i class="fas fa-save mr-2"></i>Actualizar Reflexión' : '<i class="fas fa-plus mr-2"></i>Publicar Reflexión';
         
         if (saveSuccess) {
-            btn.innerHTML = '<i class="fas fa-magic mr-2"></i>Guardado Auto';
+            btn.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Guardado';
             btn.classList.replace('bg-cyan-600', 'bg-green-600');
-            this.showToast('¡Éxito!', 'Reflexión guardada en archivo', 'success');
+            this.showToast('¡Éxito!', this.editingId ? 'Reflexión actualizada' : 'Reflexión guardada', 'success');
         } else if (this.fileHandle) {
-             btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error Auto';
+             btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
              this.showToast('Error', 'No se pudo guardar automáticamente', 'error');
         } else {
-            btn.innerHTML = '<i class="fas fa-check mr-2"></i>Agregado (Local)';
+            btn.innerHTML = '<i class="fas fa-check mr-2"></i>Hecho (Local)';
             btn.classList.replace('bg-cyan-600', 'bg-green-600');
-            this.showToast('Agregado (Modo Local)', 'Descarga el JS para guardar permanentemente', 'info');
+            this.showToast('Actualizado (Local)', 'Descarga el JS para guardar permanentemente', 'info');
         }
         
+        // Reset Logic
         setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.classList.replace('bg-green-600', 'bg-cyan-600');
+            btn.innerHTML = '<i class="fas fa-plus mr-2"></i>Publicar Reflexión'; // Default Text
+            if (btn.classList.contains('bg-green-600')) btn.classList.replace('bg-green-600', 'bg-cyan-600');
+            
             this.form.reset();
             document.getElementById('new-date').value = new Date().toISOString().split('T')[0];
-        }, 2000);
+            this.editingId = null; // Clear edit mode
+            
+            // If we were editing, maybe close the panel? User preference. Let's keep it open but reset.
+        }, 1500);
+    }
+
+    startEdit(item) {
+        this.editingId = item.id;
+        
+        document.getElementById('new-title').value = item.title;
+        document.getElementById('new-date').value = item.date;
+        document.getElementById('new-content').value = item.content;
+
+        const submitBtn = this.form.querySelector('button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fas fa-save mr-2"></i>Actualizar Reflexión';
+        
+        this.adminPanel.classList.remove('translate-y-full'); // Open panel
+        // Highlight that we are editing?
+    }
+
+    async deleteReflexion(id) {
+        if (!confirm('¿Estás seguro de que deseas eliminar esta reflexión?')) return;
+
+        this.data = this.data.filter(item => item.id !== id);
+        this.render();
+
+        if (this.fileHandle) {
+             const saved = await this.saveToConnectedFile();
+             if (saved) this.showToast('Eliminado', 'Cambios guardados en archivo', 'success');
+             else this.showToast('Error', 'No se pudo guardar la eliminación', 'error');
+        } else {
+             this.showToast('Eliminado (Local)', 'Recuerda guardar o descargar', 'info');
+        }
     }
 
     formatDate(dateString) {
