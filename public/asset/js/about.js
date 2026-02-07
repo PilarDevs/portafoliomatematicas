@@ -1,47 +1,45 @@
 // About Page - Toggle functionality
 function initAboutToggle() {
-    setTimeout(() => {
-        const toggleBtns = document.querySelectorAll('.about-toggle-btn');
-        const views = document.querySelectorAll('.about-view');
+    const toggleBtns = document.querySelectorAll('.about-toggle-btn');
+    const views = document.querySelectorAll('.about-view');
 
-        toggleBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetView = btn.getAttribute('data-view');
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetView = btn.getAttribute('data-view');
 
-                // Remove active class from all buttons
-                toggleBtns.forEach(b => {
-                    b.classList.remove('active');
-                    b.classList.add('text-gray-500');
-                    b.classList.remove('text-gray-200');
-                });
-
-                // Add active class to clicked button
-                btn.classList.add('active');
-                btn.classList.remove('text-gray-500');
-                btn.classList.add('text-gray-200');
-
-                // Hide all views
-                views.forEach(view => {
-                    view.classList.remove('active');
-                });
-
-                // Show target view
-                const targetElement = document.getElementById(`${targetView}-view`);
-                if (targetElement) {
-                    targetElement.classList.add('active');
-                }
-
-                // Re-trigger animations
-                setTimeout(() => {
-                    if (targetView === 'personal') {
-                        animatePersonalView();
-                    } else {
-                        animateGrupalView();
-                    }
-                }, 100);
+            // Remove active class from all buttons
+            toggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.classList.add('text-gray-500');
+                b.classList.remove('text-gray-200');
             });
+
+            // Add active class to clicked button
+            btn.classList.add('active');
+            btn.classList.remove('text-gray-500');
+            btn.classList.add('text-gray-200');
+
+            // Hide all views
+            views.forEach(view => {
+                view.classList.remove('active');
+            });
+
+            // Show target view
+            const targetElement = document.getElementById(`${targetView}-view`);
+            if (targetElement) {
+                targetElement.classList.add('active');
+            }
+
+            // Re-trigger animations
+            setTimeout(() => {
+                if (targetView === 'personal') {
+                    animatePersonalView();
+                } else {
+                    animateGrupalView();
+                }
+            }, 100);
         });
-    }, 500);
+    });
 }
 
 function animatePersonalView() {
@@ -72,9 +70,3 @@ function animateGrupalView() {
     });
 }
 
-// Initialize when DOM is loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAboutToggle);
-} else {
-    initAboutToggle();
-}
