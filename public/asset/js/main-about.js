@@ -41,4 +41,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     initScrollToTop();
     initAnimations();
     initAboutToggle();
+    makeFriendlyUrl();
 });
+
+function makeFriendlyUrl() {
+    if (window.location.protocol !== 'file:') {
+        const path = window.location.pathname;
+        if (path.endsWith('.html') && path !== '/index.html') {
+            const newPath = path.slice(0, -5);
+            window.history.replaceState(null, '', newPath);
+        }
+    }
+}
