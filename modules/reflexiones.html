@@ -1,0 +1,142 @@
+<section id="reflexiones" class="reflexiones-section py-20 min-h-screen">
+    <div class="container mx-auto px-4">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-100 mb-4">Bitácora de Reflexiones</h2>
+            <div class="w-20 h-1 bg-cyan-500 mx-auto mb-6 shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Un espacio para documentar el aprendizaje, los desafíos superados y el crecimiento semana tras semana.
+            </p>
+        </div>
+
+        <!-- Timeline / Grid Container -->
+        <div id="reflexiones-container" class="grid md:grid-cols-2 lg:grid-cols-1 gap-8 max-w-4xl mx-auto relative">
+            <!-- Dynamic Content Loop starts here -->
+            
+            <div class="text-center py-12 text-gray-500">
+                <i class="fas fa-folder-open text-3xl mb-4"></i>
+                <p>No hay reflexiones aún. ¡Agrega tu primera entrada!</p>
+            </div>
+
+            <!-- Pre-styled template entry (hidden) for reference/JS cloning -->
+            <div id="reflexion-template" class="hidden">
+                <div class="reflexion-card bg-gray-800 rounded-2xl p-8 mb-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 border-b border-gray-700 pb-4">
+                        <h3 class="text-2xl font-bold text-cyan-400 reflexion-title">Titulo de Semana</h3>
+                        <span class="reflexion-date mt-2 md:mt-0">Fecha</span>
+                    </div>
+                    <div class="prose prose-invert max-w-none">
+                        <p class="text-gray-300 leading-relaxed reflexion-content">
+                            Contenido de la reflexión...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Login Modal (Hidden by default) -->
+    <div id="login-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl w-full max-w-sm text-center border border-gray-700">
+            <div class="mb-6">
+                <i class="fas fa-lock text-4xl text-cyan-400 mb-2"></i>
+                <h2 class="text-xl font-bold text-white">Acceso Admin</h2>
+                <p class="text-gray-400 text-sm mt-1">Ingresa el código para editar</p>
+            </div>
+            <form id="login-form" class="space-y-4">
+                <input type="password" id="password-input" 
+                    class="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-cyan-400 text-center tracking-widest placeholder-gray-600"
+                    placeholder="••••••••" required>
+                <div class="flex gap-2">
+                    <button type="button" id="cancel-login" class="w-1/3 bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 rounded-lg transition-colors">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="w-2/3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-2 rounded-lg transition-all shadow-lg hover:shadow-cyan-500/20">
+                        Entrar
+                    </button>
+                </div>
+            </form>
+            <p id="login-error" class="text-red-400 text-xs mt-3 hidden">Código incorrecto</p>
+        </div>
+    </div>
+
+    <!-- Admin Trigger Button -->
+    <button id="admin-trigger" title="Admin Panel">
+        <i class="fas fa-pen"></i>
+    </button>
+
+    <!-- Mini Admin Panel (Fixed Bottom Sheet) -->
+    <div id="admin-panel" class="fixed bottom-0 left-0 w-full h-auto p-6 z-50 transform translate-y-full transition-transform duration-300">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-cyan-400"><i class="fas fa-edit mr-2"></i>Agregar Nueva Reflexión</h3>
+                <button id="close-admin" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <form id="reflexion-form" class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-1">Título (Ej: Semana 3)</label>
+                        <input type="text" id="new-title" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors" placeholder="Título de la entrada" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-1">Fecha</label>
+                        <input type="date" id="new-date" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition-colors" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-1">Reflexión</label>
+                    <textarea id="new-content" rows="4" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="Escribe aquí tu aprendizaje..." required></textarea>
+                </div>
+                
+                <!-- Connection Status Area -->
+                <div class="border-t border-gray-700 pt-4 pb-2">
+                    <div id="connection-status" class="hidden flex flex-col gap-2 bg-gray-900/50 p-3 rounded-lg border border-green-500/30">
+                        <div class="flex items-center justify-between">
+                            <span class="text-green-400 text-sm flex items-center">
+                                <i class="fas fa-link mr-2"></i> Conectado
+                            </span>
+                            <span class="text-xs text-gray-400">Guardado en tu PC</span>
+                        </div>
+                        <p class="text-[10px] text-gray-500 text-center border-t border-gray-800 pt-1 mt-1">
+                            ⚠️ Recuerda hacer <b>git push</b> para subir los cambios a internet.
+                        </p>
+                    </div>
+                    
+                    <button type="button" id="connect-file-btn" class="w-full bg-gray-700 hover:bg-gray-600 border border-gray-600 text-gray-300 px-4 py-2 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
+                         <i class="fas fa-plug"></i> Conectar con Archivo Local (Auto-Guardado)
+                    </button>
+                    <p class="text-xs text-gray-500 mt-2 text-center">
+                        Conecta el archivo <code>public/asset/js/reflexiones_data.js</code> para no tener que descargar cada vez.
+                    </p>
+                    <div id="local-mode-warning" class="mt-2 p-2 bg-yellow-900/30 border border-yellow-700/50 rounded text-xs text-yellow-200 text-center">
+                        <i class="fas fa-exclamation-triangle mr-1"></i> Modo Local: Descarga el archivo para guardar.
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-4 pt-2 border-t border-gray-700 mt-2">
+                    <button type="button" id="download-data" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2 rounded-lg font-medium transition-colors text-sm">
+                        <i class="fas fa-download"></i> JS
+                    </button>
+                    <button type="submit" class="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-2 rounded-lg font-bold transition-all shadow-lg hover:shadow-cyan-500/30">
+                        <i class="fas fa-save mr-2"></i>Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification" class="fixed top-24 right-4 z-[70] transform transition-all duration-300 translate-x-full opacity-0">
+        <div class="bg-gray-800 border-l-4 border-cyan-500 text-white p-4 rounded shadow-2xl flex items-center gap-3 min-w-[300px]">
+            <div id="toast-icon"><i class="fas fa-info-circle text-cyan-400 text-xl"></i></div>
+            <div>
+                <h4 id="toast-title" class="font-bold text-sm">Notificación</h4>
+                <p id="toast-message" class="text-xs text-gray-400">Mensaje del sistema</p>
+            </div>
+        </div>
+    </div>
+</section>

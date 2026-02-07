@@ -1,0 +1,8 @@
+export const reflexionesData = [
+    {
+        "id": 1770435380713,
+        "title": "LA KABRA",
+        "content": "Ay no se, que pereza",
+        "date": "2026-02-07"
+    }
+];
