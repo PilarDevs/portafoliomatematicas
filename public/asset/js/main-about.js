@@ -40,4 +40,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     initScrollEffects();
     initScrollToTop();
     initAnimations();
+    initAboutToggle();
 });
