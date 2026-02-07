@@ -48,20 +48,53 @@
     }
 }
 
+/* Unfold Animation for Title */
+@keyframes unfoldText {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .hero-content {
+    opacity: 0; /* Initially hidden */
+}
+
+.content-zoom-in .hero-content {
+    opacity: 1;
     animation: fadeInUp 1s ease-out;
 }
 
 .hero-content h1 {
-    animation: fadeInUp 1s ease-out 0.2s both;
+    opacity: 0; /* Initially hidden */
+    display: inline-block;
+    padding-bottom: 0.2em;
+}
+
+.content-zoom-in .hero-content h1 {
+    animation: unfoldText 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both; /* Increased delay slightly */
 }
 
 .hero-content p {
-    animation: fadeInUp 1s ease-out 0.4s both;
+    opacity: 0;
+}
+
+.content-zoom-in .hero-content p {
+    animation: fadeInUp 1s ease-out 0.8s both;
 }
 
 .hero-content .flex {
-    animation: fadeInUp 1s ease-out 0.6s both;
+    opacity: 0;
+}
+
+.content-zoom-in .hero-content .flex {
+    animation: fadeInUp 1s ease-out 1s both;
 }
 
 /* Floating Animation for Hero Image */
@@ -76,4 +109,31 @@
 
 .animate-float {
     animation: floatHero 3s ease-in-out infinite;
+}
+
+/* Binary Rain Animation */
+.binary-drop {
+    position: absolute;
+    color: #a5f3fc; /* Cyan-200 for a mathematical/tech feel */
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    pointer-events: none;
+    user-select: none;
+    will-change: transform, opacity;
+    animation-name: binaryFall;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    z-index: 15;
+    text-shadow: 0 0 5px rgba(165, 243, 252, 0.5);
+}
+
+@keyframes binaryFall {
+    0% {
+        transform: translateY(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
 }

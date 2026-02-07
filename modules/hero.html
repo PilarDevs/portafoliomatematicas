@@ -1,8 +1,14 @@
-<section id="home" class="hero-section min-h-screen flex items-center justify-center relative" style="background-image: url('../public/img/fanioamota.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+<section id="home" class="hero-section min-h-screen flex items-center justify-center relative overflow-hidden">
+    <!-- Interactive Background -->
+    <div class="interactive-bg absolute inset-0 bg-cover bg-center" style="background-image: url('/public/img/fanioamota.jpg');"></div>
+
     <!-- Overlay oscuro para mejorar legibilidad -->
-    <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-70 z-10"></div>
     
-    <div class="container mx-auto px-4 relative z-10">
+    <!-- Binary Rain Container -->
+    <div id="binary-rain" class="absolute inset-0 z-10 pointer-events-none overflow-hidden"></div>
+
+    <div class="container mx-auto px-4 relative z-20">
         <div class="text-center hero-content animate-fade-in">
             <h1 class="text-6xl md:text-8xl font-bold text-gray-200 mb-6 leading-tight">
                 Instituto Tecnológico <br>

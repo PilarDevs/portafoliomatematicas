@@ -23,7 +23,75 @@ function initAnimations() {
     setTimeout(() => {
         const animatedElements = document.querySelectorAll('.service-card, .portfolio-item, .skill-item');
         animatedElements.forEach(el => observer.observe(el));
+        initInteractiveBackgrounds();
+        initBinaryRain();
     }, 500);
+}
+
+function initBinaryRain() {
+    const heroSection = document.getElementById('home');
+    const container = document.getElementById('binary-rain');
+    
+    if (!heroSection || !container) return;
+
+    let throttle = false;
+
+    heroSection.addEventListener('mousemove', (e) => {
+        if (throttle) return;
+        throttle = true;
+        setTimeout(() => throttle = false, 50);
+
+        // Create binary digit
+        const digit = document.createElement('div');
+        digit.className = 'binary-drop';
+        digit.textContent = Math.random() > 0.5 ? '1' : '0';
+        
+        // Calculate position relative to the hero section
+        const rect = heroSection.getBoundingClientRect();
+        // Randomize position slightly around cursor
+        const offsetX = (Math.random() - 0.5) * 40; // +/- 20px spread
+        const x = e.clientX - rect.left + offsetX;
+        const y = e.clientY - rect.top;
+
+        digit.style.left = `${x}px`;
+        digit.style.top = `${y}px`;
+        
+        // Random size (smaller as requested)
+        const size = Math.random() * 8 + 10; // 10px to 18px
+        digit.style.fontSize = `${size}px`;
+        // Random duration for variety
+        digit.style.animationDuration = `${Math.random() * 1 + 1}s`;
+
+        container.appendChild(digit);
+
+        // Remove after animation
+        digit.addEventListener('animationend', () => {
+            digit.remove();
+        });
+    });
+}
+
+function initInteractiveBackgrounds() {
+    const backgrounds = document.querySelectorAll('.interactive-bg');
+
+    if (backgrounds.length === 0) return;
+
+    window.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        backgrounds.forEach(bg => {
+            // Check visibility to optimize
+            const rect = bg.parentElement.getBoundingClientRect();
+            if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+
+            const moveX = (clientX - centerX) * 0.015; 
+            const moveY = (clientY - centerY) * 0.015;
+
+            bg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+        });
+    });
 }
 
 function animateSkillBars() {
