@@ -67,3 +67,20 @@
         transform: translateX(0);
     }
 }
+
+/* Shining Text Animation */
+@keyframes glow-text {
+    0%, 100% {
+        text-shadow: 0 0 4px rgba(34, 211, 238, 0.4);
+        opacity: 0.8;
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(34, 211, 238, 0.9), 0 0 25px rgba(34, 211, 238, 0.6);
+        opacity: 1;
+        color: #22d3ee; /* cyan-400 */
+    }
+}
+
+.blink-shine {
+    animation: glow-text 3s infinite ease-in-out;
+}
