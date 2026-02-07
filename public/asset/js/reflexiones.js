@@ -49,7 +49,6 @@ class ReflexionesManager {
 
     render() {
         // Clear container but keep template and loader messages
-        const loader = this.container.querySelector('.fa-circle-notch')?.parentElement?.parentElement; // Fix selector if needed
         // Simpler: Just remove "rendered" cards
         const oldCards = this.container.querySelectorAll('.reflexion-card.rendered');
         oldCards.forEach(card => card.remove());
@@ -74,6 +73,18 @@ class ReflexionesManager {
             clone.querySelector('.reflexion-title').textContent = item.title;
             clone.querySelector('.reflexion-content').textContent = item.content;
             clone.querySelector('.reflexion-date').textContent = this.formatDate(item.date);
+            
+            // Handle Actions
+            const actionsDiv = clone.querySelector('.admin-actions');
+            if (this.isAuthenticated && actionsDiv) {
+                actionsDiv.classList.remove('hidden');
+                
+                const editBtn = actionsDiv.querySelector('.edit-btn');
+                if (editBtn) editBtn.addEventListener('click', () => this.startEdit(item));
+
+                const deleteBtn = actionsDiv.querySelector('.delete-btn');
+                if (deleteBtn) deleteBtn.addEventListener('click', () => this.deleteReflexion(item.id));
+            }
             
             this.container.appendChild(clone);
         });
