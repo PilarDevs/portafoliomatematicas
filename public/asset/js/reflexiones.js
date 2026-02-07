@@ -27,6 +27,7 @@ class ReflexionesManager {
 
         this.fileHandle = null;
         this.isAuthenticated = false;
+        this.editingId = null; // Track which item is being edited
 
         this.init();
     }
