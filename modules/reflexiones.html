@@ -20,10 +20,21 @@
 
             <!-- Pre-styled template entry (hidden) for reference/JS cloning -->
             <div id="reflexion-template" class="hidden">
-                <div class="reflexion-card bg-gray-800 rounded-2xl p-8 mb-8">
+                <div class="reflexion-card bg-gray-800 rounded-2xl p-8 mb-8 border border-gray-700/50 hover:border-cyan-500/30 transition-all duration-300">
                     <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 border-b border-gray-700 pb-4">
-                        <h3 class="text-2xl font-bold text-cyan-400 reflexion-title">Titulo de Semana</h3>
-                        <span class="reflexion-date mt-2 md:mt-0">Fecha</span>
+                        <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                            <h3 class="text-2xl font-bold text-cyan-400 reflexion-title">Titulo de Semana</h3>
+                            <!-- Admin Actions (Hidden by default) -->
+                            <div class="admin-actions hidden flex gap-2">
+                                <button class="edit-btn w-8 h-8 rounded-full bg-gray-700 text-yellow-500 hover:bg-yellow-500 hover:text-gray-900 transition-all flex items-center justify-center" title="Editar">
+                                    <i class="fas fa-pen text-xs"></i>
+                                </button>
+                                <button class="delete-btn w-8 h-8 rounded-full bg-gray-700 text-red-500 hover:bg-red-500 hover:text-white transition-all flex items-center justify-center" title="Eliminar">
+                                    <i class="fas fa-trash text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <span class="reflexion-date mt-2 md:mt-0 text-sm font-mono text-gray-500">Fecha</span>
                     </div>
                     <div class="prose prose-invert max-w-none">
                         <p class="text-gray-300 leading-relaxed reflexion-content">
