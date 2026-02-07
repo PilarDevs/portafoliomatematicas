@@ -98,7 +98,7 @@ function updateActiveLink() {
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === 'about.html') {
+            if (link.getAttribute('href') === '/about.html' || link.getAttribute('href') === 'about.html') {
                 link.classList.add('active');
             }
         });
