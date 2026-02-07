@@ -1,0 +1,133 @@
+<section id="contact" class="contact-section py-20 bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-200 mb-4">Contacto</h2>
+            <div class="w-20 h-1 bg-gray-600 mx-auto mb-4"></div>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3 class="text-2xl font-bold text-gray-200 mb-6">Información de Contacto</h3>
+                <p class="text-gray-400 mb-8">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-gray-700 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-200 mb-1">Ubicación</h4>
+                            <p class="text-gray-400">Ciudad, País</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="bg-gray-700 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-200 mb-1">Email</h4>
+                            <p class="text-gray-400">contacto@ejemplo.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="bg-gray-700 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-phone text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-200 mb-1">Teléfono</h4>
+                            <p class="text-gray-400">+123 456 7890</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="mt-8">
+                    <h4 class="font-semibold text-gray-200 mb-4">Sígueme en:</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="social-link bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center text-gray-300 hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center text-gray-300 hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center text-gray-300 hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center text-gray-300 hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form bg-gray-900 rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-200 mb-6">Envíame un Mensaje</h3>
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-300 font-semibold mb-2">Nombre</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-600"
+                            placeholder="Tu nombre completo"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-gray-300 font-semibold mb-2">Email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-600"
+                            placeholder="tu@email.com"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-gray-300 font-semibold mb-2">Asunto</label>
+                        <input 
+                            type="text" 
+                            id="subject" 
+                            name="subject" 
+                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-600"
+                            placeholder="Asunto del mensaje"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-gray-300 font-semibold mb-2">Mensaje</label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            rows="5"
+                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-600 resize-none"
+                            placeholder="Escribe tu mensaje aquí..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="w-full bg-gray-700 text-gray-200 py-3 rounded-lg hover:bg-gray-600 transition-colors font-semibold"
+                    >
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

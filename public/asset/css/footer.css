@@ -1,0 +1,40 @@
+/* Footer Styles */
+.footer {
+    position: relative;
+}
+
+.footer a {
+    transition: all 0.3s ease;
+}
+
+.footer form input {
+    transition: all 0.3s ease;
+}
+
+.footer form input:focus {
+    border-color: #3b82f6;
+}
+
+.footer form button {
+    transition: all 0.3s ease;
+}
+
+.footer form button:hover {
+    transform: scale(1.05);
+}
+
+/* Footer Animation */
+.footer > div {
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

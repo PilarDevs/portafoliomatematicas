@@ -1,0 +1,350 @@
+<section id="about" class="about-section py-20 bg-gray-900 min-h-screen">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-bold text-gray-200 mb-4">Conócenos</h2>
+            <div class="w-20 h-1 bg-gray-600 mx-auto mb-6"></div>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Conoce más sobre quiénes somos, nuestra formación y experiencia
+            </p>
+        </div>
+
+        <!-- Toggle Selector -->
+        <div class="flex justify-center mb-16">
+            <div class="inline-flex bg-gray-800 rounded-full p-1.5 shadow-2xl border border-gray-700">
+                <button class="about-toggle-btn active px-10 py-4 rounded-full text-gray-200 font-bold transition-all text-lg" data-view="personal">
+                    <i class="fas fa-user mr-2"></i> Personal
+                </button>
+                <button class="about-toggle-btn px-10 py-4 rounded-full text-gray-500 font-bold transition-all text-lg" data-view="grupal">
+                    <i class="fas fa-users mr-2"></i> Grupal
+                </button>
+            </div>
+        </div>
+
+        <!-- Personal View -->
+        <div class="about-view active" id="personal-view">
+            <div class="max-w-6xl mx-auto">
+                <!-- Profile Header -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl overflow-hidden mb-12 border border-gray-700">
+                    <div class="md:flex items-center">
+                        <!-- Photo Section -->
+                        <div class="md:w-2/5 p-12 flex justify-center items-center">
+                            <div class="relative profile-photo-container">
+                                <div class="absolute inset-0 bg-gray-600 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                                <div class="relative w-64 h-64 rounded-full overflow-hidden border-4 border-gray-700 shadow-2xl">
+                                    <img src="../public/img/WhatsApp Image 2026-02-05 at 8.50.11 AM.jpeg" alt="Foto de perfil" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Info Section -->
+                        <div class="md:w-3/5 p-12">
+                            <h3 class="text-4xl font-bold text-gray-100 mb-3">Chadwin H. Pilar Naut</h3>
+                            <p class="text-xl text-gray-400 mb-6 flex items-center">
+                                <i class="fas fa-graduation-cap mr-3 text-gray-500"></i>
+                                Estudiante de Matemáticas
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="bg-gray-900 p-4 rounded-xl border border-gray-700">
+                                    <i class="fas fa-envelope text-gray-500 mb-2"></i>
+                                    <p class="text-sm text-gray-500">Email</p>
+                                    <p class="text-gray-300 font-semibold">chadwinherminio@gmail.com</p>
+                                </div>
+                                <div class="bg-gray-900 p-4 rounded-xl border border-gray-700">
+                                    <i class="fas fa-map-marker-alt text-gray-500 mb-2"></i>
+                                    <p class="text-sm text-gray-500">Ubicación</p>
+                                    <p class="text-gray-300 font-semibold">Santo Domingo, República Dominicana</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="#" class="bg-gray-700 hover:bg-gray-600 text-gray-200 p-3 rounded-full transition-all">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-gray-700 hover:bg-gray-600 text-gray-200 p-3 rounded-full transition-all">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="bg-gray-700 hover:bg-gray-600 text-gray-200 p-3 rounded-full transition-all">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Who Am I Section -->
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700 hover:border-gray-600 transition-all hover:shadow-2xl">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-gray-700 p-4 rounded-full mr-4">
+                                <i class="fas fa-user-circle text-3xl text-gray-400"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-gray-200">¿Quién Soy?</h4>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed mb-4">
+                            Estudiante apasionado por las matemáticas y su aplicación en la resolución de problemas reales. Actualmente cursando mi formación académica en el Instituto Tecnológico Fabio Amable Mota, donde desarrollo habilidades en análisis matemático, programación y trabajo en equipo.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed">
+                            Me interesa especialmente explorar las aplicaciones prácticas de las matemáticas en tecnología y ciencia de datos, combinando el rigor teórico con soluciones innovadoras.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700 hover:border-gray-600 transition-all hover:shadow-2xl">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-gray-700 p-4 rounded-full mr-4">
+                                <i class="fas fa-rocket text-3xl text-gray-400"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-gray-200">Áreas de Interés</h4>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-gray-500 mt-1 mr-3"></i>
+                                <span class="text-gray-400">Cálculo y Análisis Matemático</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-gray-500 mt-1 mr-3"></i>
+                                <span class="text-gray-400">Programación en Python</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-gray-500 mt-1 mr-3"></i>
+                                <span class="text-gray-400">Estadística y Probabilidad</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-gray-500 mt-1 mr-3"></i>
+                                <span class="text-gray-400">Álgebra Lineal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Formation -->
+                <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700">
+                    <div class="flex items-center mb-8">
+                        <div class="bg-gray-700 p-4 rounded-full mr-4">
+                            <i class="fas fa-book text-3xl text-gray-400"></i>
+                        </div>
+                        <h4 class="text-3xl font-bold text-gray-200">Formación Académica</h4>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="education-item flex">
+                            <div class="mr-6 flex flex-col items-center">
+                                <div class="w-4 h-4 bg-gray-600 rounded-full mb-2"></div>
+                                <div class="w-0.5 h-full bg-gray-700"></div>
+                            </div>
+                            <div class="pb-8 flex-1">
+                                <div class="bg-gray-900 p-6 rounded-xl border border-gray-700 hover:border-gray-600 transition-all">
+                                    <span class="text-sm text-gray-500">2022 - Presente</span>
+                                    <h5 class="text-xl font-bold text-gray-200 mt-2">Licenciatura en Matemáticas</h5>
+                                    <p class="text-gray-400 mt-1">Instituto Tecnológico Fabio Amable Mota</p>
+                                    <p class="text-gray-500 mt-3 text-sm">
+                                        Actualmente cursando - Enfoque en análisis matemático, álgebra lineal y aplicaciones computacionales.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="education-item flex">
+                            <div class="mr-6 flex flex-col items-center">
+                                <div class="w-4 h-4 bg-gray-600 rounded-full mb-2"></div>
+                                <div class="w-0.5 h-full bg-gray-700"></div>
+                            </div>
+                            <div class="pb-8 flex-1">
+                                <div class="bg-gray-900 p-6 rounded-xl border border-gray-700 hover:border-gray-600 transition-all">
+                                    <span class="text-sm text-gray-500">2018 - 2022</span>
+                                    <h5 class="text-xl font-bold text-gray-200 mt-2">Bachillerato en Ciencias y Tecnología</h5>
+                                    <p class="text-gray-400 mt-1">Liceo Secundario</p>
+                                    <p class="text-gray-500 mt-3 text-sm">
+                                        Graduado con honores - Especialidad en matemáticas y física.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="education-item flex">
+                            <div class="mr-6 flex flex-col items-center">
+                                <div class="w-4 h-4 bg-gray-600 rounded-full"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="bg-gray-900 p-6 rounded-xl border border-gray-700 hover:border-gray-600 transition-all">
+                                    <span class="text-sm text-gray-500">2020 - Presente</span>
+                                    <h5 class="text-xl font-bold text-gray-200 mt-2">Cursos Complementarios</h5>
+                                    <p class="text-gray-400 mt-1">Plataformas Online (Coursera, edX)</p>
+                                    <p class="text-gray-500 mt-3 text-sm">
+                                        Programación en Python, Cálculo Avanzado, Estadística y Machine Learning.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grupal View -->
+        <div class="about-view" id="grupal-view">
+            <div class="max-w-6xl mx-auto">
+                <!-- Team Header -->
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-bold text-gray-200 mb-4">Nuestro Equipo</h3>
+                    <p class="text-gray-400 max-w-3xl mx-auto text-lg">
+                        Un grupo de estudiantes apasionados por las matemáticas, trabajando juntos para aprender, crecer y alcanzar la excelencia académica.
+                    </p>
+                </div>
+
+                <!-- Team Members Grid -->
+                <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
+                    <!-- Member 1 -->
+                    <div class="team-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-gray-600 transition-all hover:shadow-2xl hover:transform hover:-translate-y-2">
+                        <div class="h-64 overflow-hidden">
+                            <img src="../public/img/WhatsApp Image 2026-02-05 at 8.50.11 AM.jpeg" alt="myimg" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h5 class="text-xl font-bold text-gray-200 mb-2">Chadwin H. Pilar Naut</h5>
+                            <p class="text-gray-400 mb-4">Humano del equipo</p>
+                            <p class="text-gray-500 text-sm mb-4">
+                                Estudiante enfocado en pasar la materia y sobreivir.
+                            </p>
+                            <div class="flex gap-2">
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 2 -->
+                    <div class="team-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-gray-600 transition-all hover:shadow-2xl hover:transform hover:-translate-y-2">
+                        <div class="h-64 overflow-hidden">
+                            <img src="../public/img/Elaine.jpeg" alt="Elaine" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h5 class="text-xl font-bold text-gray-200 mb-2">Elaine R. Tavarez</h5>
+                            <p class="text-gray-400 mb-4">La timida</p>
+                            <p class="text-gray-500 text-sm mb-4">
+                                Apasionada por nada.
+                            </p>
+                            <div class="flex gap-2">
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 3 -->
+                    <div class="team-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-gray-600 transition-all hover:shadow-2xl hover:transform hover:-translate-y-2">
+                        <div class="h-64 overflow-hidden">
+                            <img src="../public/img/presi.jpeg" alt="Presi" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h5 class="text-xl font-bold text-gray-200 mb-2">Lisbeth Angelina</h5>
+                            <p class="text-gray-400 mb-4">Persona?</p>
+                            <p class="text-gray-500 text-sm mb-4">
+                                Interesado en ???
+                            </p>
+                            <div class="flex gap-2">
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 4 -->
+                    <div class="team-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-gray-600 transition-all hover:shadow-2xl hover:transform hover:-translate-y-2">
+                        <div class="h-64 overflow-hidden">
+                            <img src="../public/img/sebastian.jpeg" alt="Sebastian" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h5 class="text-xl font-bold text-gray-200 mb-2">Angel Sebastian</h5>
+                            <p class="text-gray-400 mb-4">Gym al fallo</p>
+                            <p class="text-gray-500 text-sm mb-4">
+                                Pedazo de musculo andante
+                            </p>
+                            <div class="flex gap-2">
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 5 -->
+                    <div class="team-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-gray-600 transition-all hover:shadow-2xl hover:transform hover:-translate-y-2">
+                        <div class="h-64 overflow-hidden">
+                            <img src="../public/img/Steven.jpeg" alt="Steven" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h5 class="text-xl font-bold text-gray-200 mb-2">Steven Guillandeaux</h5>
+                            <p class="text-gray-400 mb-4">Solo Existe</p>
+                            <p class="text-gray-500 text-sm mb-4">
+                                Estudiante interesado en pasar.
+                            </p>
+                            <div class="flex gap-2">
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="text-gray-500 hover:text-gray-300 transition-colors">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Who We Are Section -->
+                <div class="bg-gray-800 rounded-2xl p-8 mb-8 border border-gray-700">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-gray-700 p-4 rounded-full mr-4">
+                            <i class="fas fa-users text-3xl text-gray-400"></i>
+                        </div>
+                        <h4 class="text-3xl font-bold text-gray-200">¿Quiénes Somos?</h4>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <p class="text-gray-400 leading-relaxed">
+                            Somos un grupo de cinco estudiantes del Instituto Tecnológico Fabio Amable Mota, unidos por nuestra pasión por las matemáticas y el deseo de aplicar nuestros conocimientos en proyectos innovadores. Cada miembro aporta habilidades únicas que complementan nuestro trabajo en equipo.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed">
+                            Juntos colaboramos en proyectos académicos, compartimos recursos de aprendizaje y nos apoyamos mutuamente en nuestro desarrollo profesional. Creemos en el poder del trabajo colaborativo y en el aprendizaje continuo como pilares fundamentales de nuestro crecimiento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Group Stats -->
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="stat-card bg-gray-800 rounded-xl p-6 text-center border border-gray-700 hover:border-gray-600 transition-all">
+                        <i class="fas fa-users text-4xl text-gray-500 mb-3"></i>
+                        <p class="text-4xl font-bold text-gray-200 mb-2">5</p>
+                        <p class="text-gray-400">Estudiantes</p>
+                    </div>
+                    <div class="stat-card bg-gray-800 rounded-xl p-6 text-center border border-gray-700 hover:border-gray-600 transition-all">
+                        <i class="fas fa-calendar text-4xl text-gray-500 mb-3"></i>
+                        <p class="text-4xl font-bold text-gray-200 mb-2">3+</p>
+                        <p class="text-gray-400">Años Estudiando</p>
+                    </div>
+                    <div class="stat-card bg-gray-800 rounded-xl p-6 text-center border border-gray-700 hover:border-gray-600 transition-all">
+                        <i class="fas fa-project-diagram text-4xl text-gray-500 mb-3"></i>
+                        <p class="text-4xl font-bold text-gray-200 mb-2">12+</p>
+                        <p class="text-gray-400">Proyectos Académicos</p>
+                    </div>
+                    <div class="stat-card bg-gray-800 rounded-xl p-6 text-center border border-gray-700 hover:border-gray-600 transition-all">
+                        <i class="fas fa-trophy text-4xl text-gray-500 mb-3"></i>
+                        <p class="text-4xl font-bold text-gray-200 mb-2">8+</p>
+                        <p class="text-gray-400">Logros Académicos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

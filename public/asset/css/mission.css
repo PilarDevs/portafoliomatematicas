@@ -1,0 +1,82 @@
+/* Mission Section Styles */
+.mission-section {
+    position: relative;
+}
+
+/* Tab Navigation */
+.tab-btn {
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: #d1d5db;
+}
+
+.tab-btn.active {
+    background: #374151;
+    color: #e5e7eb;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    opacity: 0;
+    animation: fadeInTab 0.5s ease forwards;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Valor Cards Animation */
+.valor-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.valor-card:nth-child(1) { animation-delay: 0.1s; }
+.valor-card:nth-child(2) { animation-delay: 0.2s; }
+.valor-card:nth-child(3) { animation-delay: 0.3s; }
+.valor-card:nth-child(4) { animation-delay: 0.4s; }
+.valor-card:nth-child(5) { animation-delay: 0.5s; }
+.valor-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effects */
+.valor-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tab-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+    }
+
+    .tab-content .md\:flex {
+        flex-direction: column;
+    }
+}

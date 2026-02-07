@@ -1,0 +1,79 @@
+/* Hero Section Styles */
+.hero-section {
+    padding-top: 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+.hero-content h1 {
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gradient-text {
+    font-weight: 800;
+    filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.5));
+}
+
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+}
+
+/* Hero Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-content h1 {
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero-content p {
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero-content .flex {
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+/* Floating Animation for Hero Image */
+@keyframes floatHero {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.animate-float {
+    animation: floatHero 3s ease-in-out infinite;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Matemáticas</title>
+    <link rel="stylesheet" href="../../../public/asset/css/base.css">
+    <link rel="stylesheet" href="../../../public/asset/css/navbar.css">
+    <link rel="stylesheet" href="../../../public/asset/css/hero.css">
+    <link rel="stylesheet" href="../../../public/asset/css/valores.css">
+    <link rel="stylesheet" href="../../../public/asset/css/mision-vision.css">
+    <link rel="stylesheet" href="../../../public/asset/css/contacto.css">
+    <link rel="stylesheet" href="../../../public/asset/css/footer.css">
+</head>
+<body>
+    <!-- Navbar Module -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Module -->
+    <div id="hero-container"></div>
+
+    <!-- Valores Module -->
+    <div id="valores-container"></div>
+
+    <!-- Mision y Vision Module -->
+    <div id="mision-vision-container"></div>
+
+    <!-- Contacto Module -->
+    <div id="contacto-container"></div>
+
+    <!-- Footer Module -->
+    <div id="footer-container"></div>
+
+    <script src="../../../public/asset/js/navbar.js"></script>
+    <script src="../../../public/asset/js/hero.js"></script>
+    <script>
+        // Función para cargar módulos HTML
+        async function loadModule(containerId, modulePath) {
+            try {
+                const response = await fetch(modulePath);
+                const html = await response.text();
+                document.getElementById(containerId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error cargando módulo ${modulePath}:`, error);
+            }
+        }
+
+        // Cargar todos los módulos
+        document.addEventListener('DOMContentLoaded', function() {
+            loadModule('navbar-container', 'navbar.html');
+            loadModule('hero-container', 'hero.html');
+            loadModule('valores-container', 'valores.html');
+            loadModule('mision-vision-container', 'mision-vision.html');
+            loadModule('contacto-container', 'contacto.html');
+            loadModule('footer-container', 'footer.html');
+        });
+    </script>
+</body>
+</html>
