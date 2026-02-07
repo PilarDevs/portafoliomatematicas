@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración de Enlaces</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./public/asset/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(75, 85, 99, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen font-sans antialiased">
+    
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+        <div class="glass-panel p-8 rounded-xl shadow-2xl w-full max-w-md text-center transform transition-all scale-100">
+            <div class="mb-6">
+                <i class="fas fa-lock text-4xl text-cyan-400 mb-2"></i>
+                <h2 class="text-2xl font-bold text-white">Acceso Restringido</h2>
+                <p class="text-gray-400 text-sm">Ingrese la contraseña de administrador</p>
+            </div>
+            <form id="login-form" class="space-y-4">
+                <input type="password" id="password-input" 
+                    class="w-full bg-gray-800 border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-cyan-400 transition-colors text-center tracking-widest"
+                    placeholder="••••••••" required>
+                <button type="submit" 
+                    class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-[1.02]">
+                    Entrar
+                </button>
+            </form>
+            <p id="login-error" class="text-red-400 text-sm mt-4 hidden">Contraseña incorrecta</p>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="admin-panel" class="hidden container mx-auto px-4 py-12">
+        <header class="flex justify-between items-center mb-12 border-b border-gray-800 pb-6">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-network-wired text-cyan-400 text-2xl"></i>
+                <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                    Gestor de Enlaces
+                </h1>
+            </div>
+            <a href="index.html" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                <i class="fas fa-external-link-alt"></i> Ver Sitio
+            </a>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Form Container -->
+            <div class="lg:col-span-2 space-y-8" id="weeks-container">
+                <!-- Javascript will populate this -->
+            </div>
+
+            <!-- Sidebar / Action Panel -->
+            <div class="lg:col-span-1">
+                <div class="glass-panel p-6 rounded-xl sticky top-8">
+                    <h3 class="text-xl font-bold text-white mb-4">Guardar Cambios</h3>
+                    
+                    <!-- Mode 1: File System API (Modern Browsers) -->
+                    <div id="fs-mode" class="mb-6">
+                        <button id="connect-btn" class="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-lg transition-all shadow-lg mb-2">
+                            <i class="fas fa-folder-open"></i> 1. Conectar Proyecto
+                        </button>
+                        <button id="save-direct-btn" disabled class="w-full flex items-center justify-center gap-2 bg-gray-600 text-gray-400 font-bold py-3 rounded-lg transition-all cursor-not-allowed">
+                            <i class="fas fa-save"></i> 2. Guardar Directo
+                        </button>
+                        <p class="text-xs text-gray-400 mt-2 text-center">
+                            Permite guardar sin descargar archivos (Chrome/Edge).
+                        </p>
+                    </div>
+
+                    <div class="border-t border-gray-700 my-4 pt-4">
+                        <p class="text-gray-400 text-sm mb-4">O si prefieres el método manual:</p>
+                        <button id="download-btn" class="w-full flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 rounded-lg transition-all text-sm mb-2">
+                            <i class="fas fa-download"></i> Descargar Archivo
+                        </button>
+                    </div>
+
+                    <div id="status-msg" class="mt-4 p-3 rounded bg-gray-800/50 text-center text-sm opacity-0 transition-opacity">
+                        <!-- Status messages -->
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <button id="download-btn" class="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-lg transition-all shadow-lg hover:shadow-green-500/20">
+                            <i class="fas fa-download"></i> Descargar Archivo
+                        </button>
+                        
+                        <button id="copy-btn" class="w-full flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-medium py-3 rounded-lg transition-all">
+                            <i class="fas fa-copy"></i> Copiar Código
+                        </button>
+                    </div>
+
+                    <div id="status-msg" class="mt-4 p-3 rounded bg-gray-800/50 text-center text-sm opacity-0 transition-opacity">
+                        <!-- Status messages -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { activityLinks } from './public/asset/js/activity_links.js';
+
+        const ADMIN_PASS = 'admin123'; // Simple client-side check
+        let workingLinks = { ...activityLinks };
+
+        // DOM Elements
+        const loginModal = document.getElementById('login-modal');
+        const adminPanel = document.getElementById('admin-panel');
+        const loginForm = document.getElementById('login-form');
+        const weeksContainer = document.getElementById('weeks-container');
+
+        // Login Logic
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const pass = document.getElementById('password-input').value;
+            if(pass === ADMIN_PASS) {
+                loginModal.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    loginModal.style.display = 'none';
+                    adminPanel.classList.remove('hidden');
+                    initEditor();
+                }, 300);
+            } else {
+                const err = document.getElementById('login-error');
+                err.classList.remove('hidden');
+                err.classList.add('animate-pulse');
+            }
+        });
+
+        function initEditor() {
+            // Group activities by week based on exact keys from activity_links.js
+            // Since the object is flat, we'll use predefined groups for order
+            const groups = {
+                'Semana 1': ['Actividad 1.1', 'Actividad 1.2', 'Actividad 1.3', 'Actividad 2.1', 'Actividad 2.2', 'Actividad 2.3'],
+                'Semana 2': ['Actividad 3.1', 'Actividad 3.2', 'Actividad 3.3'],
+                'Semana 3': ['Actividad 4', 'Actividad 5', 'Actividad 6.1', 'Actividad 6.2'],
+                'Semana 4': ['Actividad 7', 'Actividad 8', 'Actividad 9.1', 'Actividad 9.2']
+            };
+
+            for (const [weekName, activities] of Object.entries(groups)) {
+                const weekCard = document.createElement('div');
+                weekCard.className = 'glass-panel p-6 rounded-xl animate-fade-in mb-6';
+                
+                weekCard.innerHTML = `
+                    <h3 class="text-cyan-400 font-bold text-lg mb-4 border-b border-gray-700 pb-2 flex items-center gap-2">
+                        <i class="far fa-calendar-alt"></i> ${weekName}
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${activities.map(act => `
+                            <div>
+                                <label class="block text-gray-400 text-xs uppercase font-bold mb-2 ml-1">${act}</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-link text-gray-500 text-sm"></i>
+                                    </div>
+                                    <input type="text" 
+                                        data-key="${act}"
+                                        value="${workingLinks[act] || '#'}" 
+                                        class="w-full bg-gray-800 border border-gray-600 text-gray-200 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full pl-10 p-2.5 transition-colors link-input" 
+                                        placeholder="https://...">
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                weeksContainer.appendChild(weekCard);
+            }
+
+            // Bind inputs to state
+            document.querySelectorAll('.link-input').forEach(input => {
+                input.addEventListener('input', (e) => {
+                    workingLinks[e.target.dataset.key] = e.target.value;
+                });
+            });
+        }
+
+        // Export Logic
+        function generateFileContent() {
+            return `// CONFIGURACIÓN DE ENLACES DE ACTIVIDADES
+// Generado automáticamente desde el Panel de Administración
+
+export const activityLinks = ${JSON.stringify(workingLinks, null, 4)};
+`;
+        }
+
+        // --- FILE SYSTEM ACCESS API ---
+        let fileHandle = null;
+
+        document.getElementById('connect-btn').addEventListener('click', async () => {
+            try {
+                // Show picker to select the specific file directly
+                [fileHandle] = await window.showOpenFilePicker({
+                    types: [{
+                        description: 'Javascript Config File',
+                        accept: {'text/javascript': ['.js']},
+                    }],
+                    startIn: 'documents' 
+                });
+
+                if (fileHandle.name !== 'activity_links.js') {
+                    showStatus('⚠️ Selecciona el archivo activity_links.js correcto', 'text-yellow-400');
+                    fileHandle = null;
+                    return;
+                }
+
+                // Enable Save button
+                const saveBtn = document.getElementById('save-direct-btn');
+                saveBtn.disabled = false;
+                saveBtn.classList.remove('bg-gray-600', 'text-gray-400', 'cursor-not-allowed');
+                saveBtn.classList.add('bg-green-600', 'hover:bg-green-500', 'text-white', 'shadow-lg');
+                
+                document.getElementById('connect-btn').classList.remove('bg-blue-600');
+                document.getElementById('connect-btn').classList.add('bg-blue-800', 'text-gray-300');
+                document.getElementById('connect-btn').innerHTML = '<i class="fas fa-check"></i> Archivo Conectado';
+
+                // Optional: Read current content to sync UI
+                // const file = await fileHandle.getFile();
+                // const text = await file.text();
+                // ... parse logic if needed ...
+
+                showStatus('Archivo conectado exitosamente', 'text-green-400');
+
+            } catch (err) {
+                console.error(err);
+                if (err.name !== 'AbortError') {
+                   showStatus('Error al conectar: ' + err.message, 'text-red-400');
+                }
+            }
+        });
+
+        document.getElementById('save-direct-btn').addEventListener('click', async () => {
+            if (!fileHandle) return;
+            
+            try {
+                const writable = await fileHandle.createWritable();
+                await writable.write(generateFileContent());
+                await writable.close();
+                showStatus('✅ ¡Cambios guardados exitosamente!', 'text-green-400');
+            } catch (err) {
+                console.error(err);
+                showStatus('Error al guardar: ' + err.message, 'text-red-400');
+            }
+        });
+
+        document.getElementById('download-btn').addEventListener('click', () => {
+            const content = generateFileContent();
+            const blob = new Blob([content], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'activity_links.js';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showStatus('Archivo descargado. Reemplaza el existente en public/asset/js/', 'text-green-400');
+        });
+
+        document.getElementById('copy-btn').addEventListener('click', () => {
+            const content = generateFileContent();
+            navigator.clipboard.writeText(content).then(() => {
+                showStatus('Código copiado al portapapeles', 'text-blue-400');
+            });
+        });
+
+        function showStatus(msg, colorClass) {
+            const el = document.getElementById('status-msg');
+            el.textContent = msg;
+            el.className = `mt-4 p-3 rounded bg-gray-800/50 text-center text-sm transition-opacity ${colorClass}`;
+            el.style.opacity = '1';
+            setTimeout(() => el.style.opacity = '0', 4000);
+        }
+    </script>
+</body>
+</html>
