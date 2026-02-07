@@ -97,9 +97,11 @@ class ReflexionesManager {
                 if (code === 'admin123') {
                     this.isAuthenticated = true;
                     this.hideLogin();
+                    this.render(); // Re-render to show admin buttons
                     this.adminPanel.classList.remove('translate-y-full');
                     this.passwordInput.value = ''; // clear
                     this.loginError.classList.add('hidden');
+                    this.showToast('Bienvenido Admin', 'Modo edición activado', 'success');
                 } else {
                     this.loginError.classList.remove('hidden');
                     this.passwordInput.classList.add('border-red-500');
