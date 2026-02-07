@@ -131,6 +131,14 @@ class ReflexionesManager {
 
         this.closeAdminBtn.addEventListener('click', () => {
             this.adminPanel.classList.add('translate-y-full');
+            // Reset edit mode if active
+            if (this.editingId) {
+                this.editingId = null;
+                this.form.reset();
+                document.getElementById('new-date').value = new Date().toISOString().split('T')[0];
+                const btn = this.form.querySelector('button[type="submit"]');
+                btn.innerHTML = '<i class="fas fa-plus mr-2"></i>Publicar Reflexión';
+            }
         });
 
         // Form Submit
