@@ -144,7 +144,23 @@ El formulario incluye:
 - Imágenes optimizadas (recomendado)
 - Lazy loading opcional
 
-## 📄 Licencia
+## � Accesos Restringidos
+
+El proyecto incluye paneles de administración con acceso protegido por contraseña:
+
+### Panel de Enlaces (dynamics.html)
+- **URL**: `dynamics.html`
+- **Contraseña**: `admin123`
+- **Función**: Gestión de enlaces de actividades por semana
+
+### Panel de Reflexiones (reflexiones.html)
+- **URL**: `reflexiones.html`
+- **Contraseña**: `admin123`
+- **Función**: Agregar, editar y eliminar reflexiones de la bitácora
+
+> ⚠️ **Nota de Seguridad**: La validación de contraseña se realiza del lado del cliente. Para uso en producción, se recomienda implementar autenticación del lado del servidor.
+
+## �📄 Licencia
 
 Proyecto de código abierto para uso educativo y personal.
 
