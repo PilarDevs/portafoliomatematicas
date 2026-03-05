@@ -1,4 +1,5 @@
 import { ReflexionesManager } from './reflexiones.js';
+import { activityLinks } from './activity_links.js';
 
 class ModuleLoader {
     constructor() {
@@ -44,6 +45,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initialize components
     if (window.initNavbar) window.initNavbar();
     
+    // Apply activity links
+    applyActivityLinks();
+
     // Initialize Reflexiones logic
     new ReflexionesManager();
 });
+
+function applyActivityLinks() {
+    // Find all links in the navbar
+    const links = document.querySelectorAll('.navbar a');
+    
+    links.forEach(link => {
+        const text = link.textContent.trim();
+        // Check if this link text exists in our config
+        if (activityLinks[text]) {
+            link.href = activityLinks[text];
+            // Optional: Open in new tab if it's an external link
+            if (activityLinks[text].startsWith('http')) {
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+            }
+        }
+    });
+}
