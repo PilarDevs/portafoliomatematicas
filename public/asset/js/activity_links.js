@@ -5,6 +5,7 @@ export const activityLinks = {
     "Actividad 1.1": "https://drive.google.com/drive/folders/1aspe2LkIe50OUhA4F7MatSPpvU6MnDUw?usp=sharing",
     "Actividad 1.2": "#",
     "Actividad 1.3": "#",
+    "Actividad 1.4": "#",
     "Actividad 2.1": "#",
     "Actividad 2.2": "#",
     "Actividad 2.3": "#",
