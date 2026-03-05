@@ -1,3 +1,5 @@
+import { activityLinks } from './activity_links.js';
+
 // Module Loader for About Page
 class ModuleLoader {
     constructor() {
@@ -42,7 +44,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     initAnimations();
     initAboutToggle();
     makeFriendlyUrl();
+    applyActivityLinks();
 });
+
+function applyActivityLinks() {
+    // Find all links in the navbar
+    const links = document.querySelectorAll('.navbar a');
+    
+    links.forEach(link => {
+        const text = link.textContent.trim();
+        // Check if this link text exists in our config
+        if (activityLinks[text]) {
+            link.href = activityLinks[text];
+            // Optional: Open in new tab if it's an external link
+            if (activityLinks[text].startsWith('http')) {
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+            }
+        }
+    });
+}
 
 function makeFriendlyUrl() {
     if (window.location.protocol !== 'file:') {
