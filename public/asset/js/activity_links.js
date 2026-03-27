@@ -20,5 +20,5 @@ export const activityLinks = {
     "Actividad 8": "https://drive.google.com/drive/folders/1R2duphYHC_HO02NVhiQDLFhKx_uc9q-k?usp=sharing",
     "Actividad 9.1": "https://drive.google.com/drive/folders/1p4hoTMorKr_ZTf3D93HWfTbZMELkw3P3?usp=sharing",
     "Actividad 9.2": "https://drive.google.com/drive/folders/1L__gQd8SLBcVwm-RCXRSrRIJo0NY7d4j?usp=sharing",
-    "Todas las tareas de límites": "https://drive.google.com/drive/folders/1PbWWqgKDBDorh525uecKaGZD21FGSoCeR_o?usp=sharing"
+    "Todas las tareas de límites": "https://drive.google.com/drive/folders/1dHMqEXuhKYK-XXqomNTRQETW1TVYofxs?usp=sharing"
 };
