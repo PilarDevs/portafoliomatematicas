@@ -1,5 +1,11 @@
 export const reflexionesData = [
     {
+        "id": 1774583478956,
+        "title": "Semana 4",
+        "content": "Aqui ya se introducen algunas formulas extrañas que no logro entender en lo absoluto, pero sigue siendo interesante aun",
+        "date": "2026-03-27"
+    },
+    {
         "id": 1774583398774,
         "title": "Semana 3",
         "content": "Mas sucesiones, sigo sin retenerlas pero aqui entra el tema de analisis, entender situaciones y darles una solucion segun las indicaciones, me gusta",
