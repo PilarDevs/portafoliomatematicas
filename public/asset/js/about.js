@@ -1,3 +1,16 @@
+// Historial toggle
+function toggleHistorial() {
+    const section = document.getElementById('historial-section');
+    const chevron = document.getElementById('historial-chevron');
+    if (section.classList.contains('hidden')) {
+        section.classList.remove('hidden');
+        chevron.classList.add('rotate-180');
+    } else {
+        section.classList.add('hidden');
+        chevron.classList.remove('rotate-180');
+    }
+}
+
 // About Page - Toggle functionality
 function initAboutToggle() {
     const toggleBtns = document.querySelectorAll('.about-toggle-btn');

@@ -1,4 +1,4 @@
-import { activityLinks } from './activity_links.js';
+import { activityLinks, GROUP_NAME } from './activity_links.js';
 
 // Module Loader for About Page
 class ModuleLoader {
@@ -45,7 +45,49 @@ document.addEventListener('DOMContentLoaded', async () => {
     initAboutToggle();
     makeFriendlyUrl();
     applyActivityLinks();
+    applyGroupName();
 });
+
+function applyGroupName() {
+    document.querySelectorAll('[data-group-name]').forEach(el => {
+        el.textContent = GROUP_NAME;
+    });
+}
+
+window.openDespedida = function() {
+    const modal = document.getElementById('despedida-modal');
+    if (!modal) return;
+    // Move to <body> so fixed positioning is always viewport-relative
+    if (modal.parentElement !== document.body) {
+        document.body.appendChild(modal);
+    }
+    modal.classList.remove('hidden');
+
+    const titulo = document.getElementById('despedida-titulo');
+    const body   = document.getElementById('despedida-body');
+    if (!titulo) return;
+
+    if (body) { body.style.opacity = '0'; body.style.transition = ''; }
+
+    const fullText = titulo.dataset.text || 'Para Nuestro Profesor';
+    titulo.textContent = '';
+    titulo.style.borderRight = '2px solid #f472b6';
+
+    let i = 0;
+    const iv = setInterval(() => {
+        titulo.textContent += fullText[i++];
+        if (i >= fullText.length) {
+            clearInterval(iv);
+            setTimeout(() => { titulo.style.borderRight = 'none'; }, 600);
+            if (body) {
+                setTimeout(() => {
+                    body.style.transition = 'opacity 1.2s ease';
+                    body.style.opacity = '1';
+                }, 400);
+            }
+        }
+    }, 70);
+};
 
 function applyActivityLinks() {
     // Find all links in the navbar
