@@ -4,9 +4,9 @@ import { activityLinks, GROUP_NAME } from './activity_links.js';
 class ModuleLoader {
     constructor() {
         this.modules = [
-            { id: 'navbar-module', path: './modules/navbar.html' },
-            { id: 'about-module', path: './modules/about.html' },
-            { id: 'footer-module', path: './modules/footer.html' }
+            { id: 'navbar-module', path: '/modules/navbar.html' },
+            { id: 'about-module', path: '/modules/about.html' },
+            { id: 'footer-module', path: '/modules/footer.html' }
         ];
     }
 

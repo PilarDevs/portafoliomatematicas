@@ -4,10 +4,10 @@ import { activityLinks, GROUP_NAME } from './activity_links.js';
 class ModuleLoader {
     constructor() {
         this.modules = [
-            { id: 'navbar-module', path: './modules/navbar.html' },
-            { id: 'hero-module', path: './modules/hero.html' },
-            { id: 'mission-module', path: './modules/mission.html' },
-            { id: 'footer-module', path: './modules/footer.html' }
+            { id: 'navbar-module', path: '/modules/navbar.html' },
+            { id: 'hero-module', path: '/modules/hero.html' },
+            { id: 'mission-module', path: '/modules/mission.html' },
+            { id: 'footer-module', path: '/modules/footer.html' }
         ];
     }
 
